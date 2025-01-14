@@ -50,7 +50,7 @@ var rootCmd = &cobra.Command{
 
 		// Start API
 		log.Info().Msg("Starting API")
-		api.Initialize()
+		api.Initialize("secret")
 		api.SetupRoutes()
 		api.Start()
 	},

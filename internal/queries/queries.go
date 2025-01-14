@@ -62,3 +62,17 @@ func (query *Queries) NewUser(email string, passwordHash string) (error) {
 
 	return nil
 }
+
+func (query *Queries) DeleteUser(email string) (error) {
+	user := db.UsersTable{
+		Email: email,
+	}
+
+	result := query.Database.Database.Unscoped().Where("email = ?", email).Delete(&user)
+
+	if result.Error != nil {
+		return result.Error
+	}
+
+	return nil
+}
